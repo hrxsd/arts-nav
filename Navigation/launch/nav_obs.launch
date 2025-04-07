@@ -1,0 +1,28 @@
+<launch>
+    <arg name="base_foot_print" default="base_link" />
+    <arg name="map_frame" default="3dmap" />
+    <arg name="localization" default="true" />
+    <arg name="rviz" default="true" />
+    <arg name="json_file" default="$(find mapping)/config/target_map.json" />
+
+
+
+   <group if="$(arg rviz)">
+   
+       <node name="rviz" pkg="rviz" type="rviz" args="-d $(find navigation)/rviz/navi.rviz" required="true" />
+   </group> 
+
+
+    <include if="$(arg localization)"  file="$(find hdl_localization)/launch/hdl_localization.launch"/>
+
+    <node pkg="navigation" type="navi_service" name="navi_service" output="screen" />
+        <param name="base_foot_print" value="$(arg base_foot_print)" />
+        <param name="map_frame" value="$(arg map_frame)" />
+        <param name="json_file" value="$(arg json_file)" />
+
+    <node pkg="robot_teleop" type="keyboard_nav.py" name="teleop_twist_keyboard_nav_node" /> 
+    
+    <node pkg="navigation" type="nav_obs" name="nav_obs" output="screen" />
+
+
+</launch>

@@ -1,0 +1,8 @@
+# requst
+int32 tar_type
+
+---
+
+# response
+bool nav_flag
+string tar_string

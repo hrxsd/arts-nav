@@ -1,0 +1,6 @@
+ 
+ <launch>
+    
+    <include file="$(find arx5_moveit)/launch/arx5_moveit.launch" /> 
+    <!-- <node pkg="arx5_control" type="arx_server.py" name="arx_server" /> -->
+ </launch>

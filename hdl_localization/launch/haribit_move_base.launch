@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<launch>    
+
+    <node name="map_server" pkg="map_server" type="map_server" args="$(find hdl_localization)/config/map/map.yaml"/>
+	<!-- <node name="map_server" pkg="map_server" type="map_server" args="/home/nuc1003a/ARTS_test/src/hdl_localization/config/map/map.yaml"/> -->
+
+
+    <node pkg="tf2_ros" type="static_transform_publisher" name="map_map_broadcaster" args="0 0 -0.3 0 0 0 /map /3dmap"/>
+	<node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen" clear_params="false" >
+		<rosparam file="$(find hdl_localization)/config/move_base_params.yaml" command="load" />
+		<rosparam file="$(find hdl_localization)/config/costmap_common_params.yaml" command="load" ns="global_costmap" />
+		<rosparam file="$(find hdl_localization)/config/costmap_common_params.yaml" command="load" ns="local_costmap" />
+		<rosparam file="$(find hdl_localization)/config/local_costmap_params.yaml" command="load" />
+		<rosparam file="$(find hdl_localization)/config/global_costmap_params.yaml" command="load" />
+		<rosparam file="$(find hdl_localization)/config/global_planner_params.yaml" command="load" />
+		<rosparam file="$(find hdl_localization)/config/dwa_local_planner_params.yaml" command="load" />
+		<!-- <param name="base_local_planner" value="my_planner/MyPlanner" />  -->
+		<!-- <rosparam file="$(find hdl_localization)/config/planner.yaml" command="load" /> -->
+		</node>
+  
+</launch>

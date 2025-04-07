@@ -1,0 +1,7 @@
+image: /home/nuc1003a/ARTS_test/src/hdl_localization/config/map/map.pgm
+resolution: 0.050000
+origin: [-6.338695, -6.365486, 0.000000]
+negate: 0
+occupied_thresh: 0.65
+free_thresh: 0.196
+

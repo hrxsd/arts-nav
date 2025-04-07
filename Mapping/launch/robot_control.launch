@@ -1,0 +1,8 @@
+<launch>
+
+    <!-- <include file="/home/jzian/WorkSpace/alubi_imu/src/ros_example/launch/lpmsig1_rs485.launch"/> -->
+    <!-- <include file="/home/jzian/WorkSpace/velodyne_driver/src/velodyne/velodyne_pointcloud/launch/VLP16_points.launch"/> -->
+
+    <node pkg = "scout_bringup" type="bringup_can2usb.bash" name="robot_control" output = "screen"/>
+
+</launch>

@@ -1,0 +1,5 @@
+<launch>
+  <!-- <include file="/home/nuc1003a/scout-mini_ws/src/scout_ros/scout_bringup/launch/scout_miniomni_robot_base.launch"/> -->
+  <include file="$(find scout_bringup)/launch/scout_miniomni_robot_base.launch"/>
+  <node pkg="robot_teleop" type="keyboard.py" name="keyboard_node" output="screen"/>
+</launch>
