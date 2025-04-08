@@ -1,7 +1,0 @@
-<launch>
-
-    <node pkg="sr_pkg" type="iat_publish" name="iat_publish" output="screen">
-        <param name="cn" type="bool" value="true"/> 
-    </node>
-
-</launch>
