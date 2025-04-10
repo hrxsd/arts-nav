@@ -3,6 +3,7 @@ project(navigation)
 
 ADD_COMPILE_OPTIONS(-std=c++14 )
 
+find_package(yaml-cpp REQUIRED)
 
 find_package(catkin REQUIRED COMPONENTS
     actionlib
@@ -91,5 +92,13 @@ add_executable(navi_service src/navi_server.cc)
 add_dependencies(navi_service ${PROJECT_NAME}_gencpp)
 target_link_libraries(navi_service jsonlib navcore ${catkin_LIBRARIES})
 
+add_executable(nav_to_object src/nav_to_object.cpp)
+target_link_libraries(nav_to_object
+  ${catkin_LIBRARIES}
+)
 
+add_dependencies(nav_to_object ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS} )
+target_link_libraries(nav_to_object
+  ${catkin_LIBRARIES} ${YAML_CPP_LIBRARIES}
+)
 
